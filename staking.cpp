@@ -77,7 +77,7 @@ ACTION staking::claim(name user, uint64_t stake_id) {
     // Transfer rewards logic here (e.g., calling a token contract)
     action(
         permission_level{get_self(), "active"_n},
-        TOKEN_CONTRACT, "transfer"_n,
+        "stake.ghosts"_n, "transfer"_n, // staking contract address
         std::make_tuple(get_self(), user, itr->rewards, std::string("Claim staking rewards"))
     ).send();
 
